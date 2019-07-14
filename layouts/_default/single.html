@@ -32,7 +32,7 @@
     <div class="post-content">
       {{ .Content }}
     </div>
-    {{ if or .NextInSection .PrevInSection }}
+    {{ if (and (or .NextInSection .PrevInSection) .Params.ShowPosts) }}
       <div class="pagination">
         <div class="pagination__title">
           <span class="pagination__title-h">{{ $.Site.Params.ReadOtherPosts | default "Read other posts" }}</span>
