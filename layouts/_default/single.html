@@ -1,12 +1,15 @@
 {{ define "main" }}
   <div class="post">
     <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+    <h3 class="post-subtitle"> {{ .Params.subtitle | markdownify }} </h3>
     <div class="post-meta">
+
       {{ with .Date | default nil }}
         <span class="post-date">
-            {{ .Format ($.Site.Params.DateFormatSingle | default "2006-01-02") }}
+            Published {{ .Format ($.Site.Params.DateFormatSingle | default "2006-01-02") }}
         </span>
       {{ end }}
+      
       {{ with .Params.Author }}<span class="post-author">— {{ $.Site.Params.WrittenBy | default "Written by" }} {{ . }}</span>{{ end }}
       {{ if $.Site.Params.ShowReadingTime }}
         <span class="post-read-time">— {{ .ReadingTime }} {{ $.Site.Params.MinuteReadingTime | default "min read" }}</span>
